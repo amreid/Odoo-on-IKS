@@ -3,9 +3,6 @@
 
 
   Odoo Business Apps on IBM Cloud.
-     
-   Amr Eid 
-   IBM Cloud Architect
 
 
 	 	 	 		
