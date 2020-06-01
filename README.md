@@ -10,11 +10,11 @@
 
 This document will help penetrating a new market IBM didn’t use to knock. Which is the small business market, Egypt will be the example we will use most of the time, which we believe we can clone it to similar countries. 
 The document will 
-Give an overview about Odoo,  Its customer segment, It’s market share..etc.
-Financial Figure for an average setup of Odoo on IBM Cloud.	
-Architecture Diagram for Odoo on IBM Cloud.
-How to integrate Odoo with IBM Services. 
-Detailed Technical guide describing the “How To”.
+- Give an overview about Odoo,  Its customer segment, It’s market share..etc.	
+- Architecture Diagram for Odoo on IBM Cloud.
+- How to integrate Odoo with IBM Services. 
+- Detailed Technical guide describing the “How To”.
+- Financial Figure for an average setup of Odoo on IBM Cloud.
 
 ## Odoo Overview
 Odoo is a suite of web-based open source business apps. The main Odoo Apps include an Open Source CRM, Website Builder, eCommerce, Project Management, Billing & Accounting, Point of Sale, Human Resources, Marketing, Manufacturing, Purchase Management, …
