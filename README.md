@@ -54,7 +54,7 @@ Sysdig is a third-party, cloud-native container analytics system that you can us
 
 Odoo is available at IBM Cloud Helm Charts, This document will use version 13.0.5. 
 
-  ![](Picture002.png)
+  ![](images/picture301.png)
 
 Installation Guide - Detailed Technical Guide 
 
