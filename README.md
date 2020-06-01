@@ -2,7 +2,7 @@
 
 
 
-  Odoo Business Apps on IBM Cloud.
+##  Odoo Business Apps on IBM Cloud.
 
 
 	 	 	 		
@@ -16,7 +16,7 @@ Architecture Diagram for Odoo on IBM Cloud.
 How to integrate Odoo with IBM Services. 
 Detailed Technical guide describing the “How To”.
 
-Odoo Overview
+## Odoo Overview
 Odoo is a suite of web-based open source business apps. The main Odoo Apps include an Open Source CRM, Website Builder, eCommerce, Project Management, Billing & Accounting, Point of Sale, Human Resources, Marketing, Manufacturing, Purchase Management, …
 			
 Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get a full-featured Open Source ERP when you install several Apps.	
@@ -25,7 +25,7 @@ Odoo Partners in Egypt
 Odoo has a long list of Partners, When it comes to Egypt, we can list around 25 Partners, 9 of them are Golden Partners, 6 of them are Silver. The total number of end customers for those partners are exceeding 1K.
 
 
-Why IBM 
+## Why IBM 
 Odoo is a web based suite of business apps. Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get a full-featured Open Source ERP when you install several Apps.
 
 Odoo also is available as a Containerized Helm Chart through Bitnami and IBM Helm Catalog on the Public Cloud Platform.
@@ -39,19 +39,7 @@ IBM has a Catalog of CP Services which can enrich the solution above and beyond.
 
 
 
-
-
-
-Financial Flavor
-IBM Customer will have to pay for his customized service based on what he will use, Based on the exercise we are proposing here, The customer will have to pay for the infrastructure he is using, which means IKS Infrastructure plus the PaaS he is using from IBM catalog which means Sysdig and LogDNA.
-
-IKS Cluster is based on MultiZones (Only 2 Zones), with 2 Worker Nodes (4*16 VSI) per each zone.
-
-       IKS + LogDNA + SysDig average list price = 1500$ MRR
-             
-
-
-Technical Architecture 
+##  Technical Architecture 
 IBM Cloud VPC is the Infrastructure backbone which hosts IKS (IBM Kubernetes Service). We picked IKS on top of Openshift to keep the solution simple and cheaper. 
 
 IBM Cloud™ Virtual Private Cloud (VPC) is your own protected space in the IBM Cloud. IBM Cloud VPC provides the advanced security of private cloud with the agility and ease of public cloud.
@@ -71,19 +59,22 @@ Odoo is available at IBM Cloud Helm Charts, This document will use version 13.0.
 Installation Guide - Detailed Technical Guide 
 
 Prerequisite :  VPC 
-Step 01, You will need to create a VPC in the region we decided to host our cluster. (Frankfurt)
+#### Step 01
+You will need to create a VPC in the region we decided to host our cluster. (Frankfurt)
 From IBM Cloud portal , choose to create a VPC. Give it a name and accept all the default, attached a public gateway.
 
-Step 02, We will need to create a Subnet in each DC we will need to spread our workers in, So 
+#### Step 02
+We will need to create a Subnet in each DC we will need to spread our workers in, So 
 One SN in FRA01, and another one in FRA02. Like below.
 
   ![](Picture003.png)
 
-Provisioning the Cluster
+#### Provisioning the Cluster
 While provisioning IKS, you can pick IKS instead of Openshift.
 IKS is simpler and cheaper than Openshift which solidify our target of having a simple and cheap solution.
 
-Step 01, We will go with the standard cluster and IKS on top of a VPC Infrastructure. 
+#### Step 01
+We will go with the standard cluster and IKS on top of a VPC Infrastructure. 
 VPC and the subnets you’ve created in the previous step will be fetched in this step automatically. 
 I will build the cluster on only Multiple Zone, I will limit it only on two. (Check Below) 
 
@@ -96,7 +87,7 @@ I’ve limited the worker nodes to only two. (Check Below)
 
 ![](Picture006.png)
 
-Step 02, 
+#### Step 02
 You will be redirected to some instructions page which gives you some commands to run in order to be able to access the cluster using the command line if this was your first cluster.
 
 curl -sL https://ibm.biz/idt-installer | bash
@@ -124,7 +115,7 @@ Verify that you can connect to your cluster.
 ![](Picture100.png)
 
 
-Step 03, 
+#### Step 03
 Provisioning the cluster will take around 15 mins, In this time, we can setup up some packages in order to access the registry.
  In order to do that, you will need to install Docker first as well as the below packages.
 
@@ -148,18 +139,18 @@ You will find no deployment, as you didn’t deploy anything yet
 
 ![](Picture102.png)
 
-Step 04, Create Custom Namespace
+#### Step 04, Create Custom Namespace
 
 kubectl create namespace eidns
 ![](Picture103.png)
 
-Step 05, 
+#### Step 05, 
 From the registry view, Choose Helm Catalog, search for Odoo Helm Chart.
 
 ![](Picture104.png)
 
 
-Step 05, 
+#### Step 06, 
 If you haven’t already, add the repo.
 helm repo add kubernetes https://kubernetes-charts.storage.googleapis.com
 
@@ -175,7 +166,7 @@ helm list
 
 ![](Picture107.png)
 
-Step 06, 
+#### Step 07, 
 Now it is the time to Open and test Odoo portal.
 From the services view, you will find Odoo service up and running, and the external endpoint is there.
 
@@ -184,7 +175,7 @@ From the services view, you will find Odoo service up and running, and the exter
 
 
 
-Step 06, Click on the external endpoint which will launch in your default browser.
+Step 07, Click on the external endpoint which will launch in your default browser.
 ![](Picture109.png)
 
 From Pods view, Containers section you can get the username and password to access Odoo portal.
@@ -195,15 +186,15 @@ Finally, You get Odoo up and running.
 
 
 
-Installing LogDNA
+## Installing LogDNA
 
 LogDNA is a third-party service that you can use to add intelligent logging capabilities to your cluster and apps.
 
-Two Parts: 
+#### Two Parts: 
 We need to have LogDNA as a service
 We need to install the agent on K8s Cluster.
 
-LogDNA as a service
+#### LogDNA as a service
 You need to pick DNA from IBM Cloud portal Catalog, and provision it. You can choose the price plan you like then hit Create. 
 ![](Picture112.png)
 
@@ -226,7 +217,7 @@ In order to validate it can read properly , you need now to check logDNA Dashboa
 
 ![](Picture118.png)
 
-Note:
+#### Note:
 As an alternative way, you can do the same LogDNA agent installation on IKS using the Helm Catalog.
 From this catalog, You  can start with choosing LogDNA
 
@@ -245,7 +236,7 @@ Verify that you successfully installed the chart.
 ![](Picture121.png)
 
 
-Installing Sysdig
+## Installing Sysdig
 Sysdig is a third-party, cloud-native container analytics system that you can use to gain insight into the performance and health of your compute hosts, apps, containers, and networks.
 Two Parts: 
 We need to have Sysdig as a service (IBM Cloud Monitoring with Sysdig).
@@ -264,3 +255,14 @@ helm list -n eidns
 Verify that you successfully installed the chart.
 
 ![](Picture124.png)
+
+
+
+## Financial Flavor
+IBM Customer will have to pay for his customized service based on what he will use, Based on the exercise we are proposing here, The customer will have to pay for the infrastructure he is using, which means IKS Infrastructure plus the PaaS he is using from IBM catalog which means Sysdig and LogDNA.
+
+IKS Cluster is based on MultiZones (Only 2 Zones), with 2 Worker Nodes (4*16 VSI) per each zone.
+
+       IKS + LogDNA + SysDig average list price = 1500$ MRR
+             
+
