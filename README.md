@@ -54,7 +54,7 @@ Sysdig is a third-party, cloud-native container analytics system that you can us
 
 Odoo is available at IBM Cloud Helm Charts, This document will use version 13.0.5. 
 
-  ![](images/picture301.png)
+  ![](images/Picture002.png)
 
 Installation Guide - Detailed Technical Guide 
 
@@ -67,7 +67,7 @@ From IBM Cloud portal , choose to create a VPC. Give it a name and accept all th
 We will need to create a Subnet in each DC we will need to spread our workers in, So 
 One SN in FRA01, and another one in FRA02. Like below.
 
-  ![](Picture003.png)
+  ![](images/Picture003.png)
 
 #### Provisioning the Cluster
 While provisioning IKS, you can pick IKS instead of Openshift.
