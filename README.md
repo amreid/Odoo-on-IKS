@@ -109,14 +109,16 @@ ibmcloud login -sso
 Log in to your IBM Cloud account.
 
 ibmcloud ks cluster config --cluster xxxxxx
+
 Download the kubeconfig files for your cluster. You will need to replace xxxx with your cluster id.
 
 ![](Picture008.png)
 
 kubectl version --short
+
 Verify that you can connect to your cluster.
 
-![](Picture09.png)
+![](Picture009.png)
 
 
 
