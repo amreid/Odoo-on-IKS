@@ -121,7 +121,7 @@ Verify that you can connect to your cluster.
 ![](Picture009.png)
 
 
-
+![](Picture100.png)
 
 
 Step 03, 
