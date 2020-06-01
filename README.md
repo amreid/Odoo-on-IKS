@@ -229,6 +229,7 @@ In order to validate it can read properly , you need now to check logDNA Dashboa
 Note:
 As an alternative way, you can do the same LogDNA agent installation on IKS using the Helm Catalog.
 From this catalog, You  can start with choosing LogDNA
+
 ![](Picture119.png)
 
 
