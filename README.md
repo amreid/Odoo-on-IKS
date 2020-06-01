@@ -100,6 +100,7 @@ Step 02,
 You will be redirected to some instructions page which gives you some commands to run in order to be able to access the cluster using the command line if this was your first cluster.
 
 curl -sL https://ibm.biz/idt-installer | bash
+
 Download and install a few CLI tools and the Kubernetes Service plug-in.
 
 ![](Picture007.png)
