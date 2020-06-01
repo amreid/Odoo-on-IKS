@@ -77,7 +77,7 @@ From IBM Cloud portal , choose to create a VPC. Give it a name and accept all th
 Step 02, We will need to create a Subnet in each DC we will need to spread our workers in, So 
 One SN in FRA01, and another one in FRA02. Like below.
 
-
+  ![](Picture003.png)
 
 Provisioning the Cluster
 While provisioning IKS, you can pick IKS instead of Openshift.
@@ -88,13 +88,13 @@ VPC and the subnets you’ve created in the previous step will be fetched in thi
 I will build the cluster on only Multiple Zone, I will limit it only on two. (Check Below) 
 
 
-
+![](Picture004.png)
 
 Give a name to the Cluster, May be Tags as well.
 Choose the proper Worker Size , I’ve limited it to medium VMs.
 I’ve limited the worker nodes to only two. (Check Below) 
 
-
+![](Picture006.png)
 
 Step 02, 
 You will be redirected to some instructions page which gives you some commands to run in order to be able to access the cluster using the command line if this was your first cluster.
@@ -102,17 +102,20 @@ You will be redirected to some instructions page which gives you some commands t
 curl -sL https://ibm.biz/idt-installer | bash
 Download and install a few CLI tools and the Kubernetes Service plug-in.
 
+![](Picture007.png)
+
 ibmcloud login -sso
 Log in to your IBM Cloud account.
 
 ibmcloud ks cluster config --cluster xxxxxx
 Download the kubeconfig files for your cluster. You will need to replace xxxx with your cluster id.
 
+![](Picture008.png)
 
 kubectl version --short
 Verify that you can connect to your cluster.
 
-
+![](Picture09.png)
 
 
 
