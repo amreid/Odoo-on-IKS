@@ -79,13 +79,13 @@ VPC and the subnets you’ve created in the previous step will be fetched in thi
 I will build the cluster on only Multiple Zone, I will limit it only on two. (Check Below) 
 
 
-![](Picture004.png)
+![](images/Picture004.png)
 
 Give a name to the Cluster, May be Tags as well.
 Choose the proper Worker Size , I’ve limited it to medium VMs.
 I’ve limited the worker nodes to only two. (Check Below) 
 
-![](Picture006.png)
+![](images/Picture006.png)
 
 #### Step 02
 You will be redirected to some instructions page which gives you some commands to run in order to be able to access the cluster using the command line if this was your first cluster.
@@ -94,7 +94,7 @@ curl -sL https://ibm.biz/idt-installer | bash
 
 Download and install a few CLI tools and the Kubernetes Service plug-in.
 
-![](Picture007.png)
+![](images/Picture007.png)
 
 ibmcloud login -sso
 Log in to your IBM Cloud account.
@@ -103,16 +103,16 @@ ibmcloud ks cluster config --cluster xxxxxx
 
 Download the kubeconfig files for your cluster. You will need to replace xxxx with your cluster id.
 
-![](Picture008.png)
+![](images/Picture008.png)
 
 kubectl version --short
 
 Verify that you can connect to your cluster.
 
-![](Picture009.png)
+![](images/Picture009.png)
 
 
-![](Picture100.png)
+![](images/Picture100.png)
 
 
 #### Step 03
@@ -130,14 +130,14 @@ Choose a name for your first namespace
 
 When the cluster turns green, with Normal status, Validate it is working properly by checking the Overview page. 
 
-![](Picture101.png)
+![](images/Picture101.png)
 
 The easiest way to proceed with the cluster is to open the dashboard, Click on the Kubernetes Dashboard button to open the K8s Dashboard.
 
 You can validate your Nodes, (you should find 4 nodes each two in different subnet)
 You will find no deployment, as you didn’t deploy anything yet
 
-![](Picture102.png)
+![](images/Picture102.png)
 
 #### Step 04, Create Custom Namespace
 
@@ -147,42 +147,42 @@ kubectl create namespace eidns
 #### Step 05, 
 From the registry view, Choose Helm Catalog, search for Odoo Helm Chart.
 
-![](Picture104.png)
+![](images/Picture104.png)
 
 
 #### Step 06, 
 If you haven’t already, add the repo.
 helm repo add kubernetes https://kubernetes-charts.storage.googleapis.com
 
-![](Picture105.png)
+![](images/Picture105.png)
 
 Choose a release name and install the chart. Specify parameters 
 helm install --name <releasename> kubernetes/odoo --namespace=foo
 
-![](Picture106.png)
+![](images/Picture106.png)
 
 Validate that your helm chart has been installed.
 helm list
 
-![](Picture107.png)
+![](images/Picture107.png)
 
 #### Step 07, 
 Now it is the time to Open and test Odoo portal.
 From the services view, you will find Odoo service up and running, and the external endpoint is there.
 
-![](Picture108.png)
+![](images/Picture108.png)
 
 
 
 
 Step 07, Click on the external endpoint which will launch in your default browser.
-![](Picture109.png)
+![](images/Picture109.png)
 
 From Pods view, Containers section you can get the username and password to access Odoo portal.
-![](Picture110.png)
+![](images/Picture110.png)
 
 Finally, You get Odoo up and running. 
-![](Picture111.png)
+![](images/Picture111.png)
 
 
 
@@ -196,32 +196,32 @@ We need to install the agent on K8s Cluster.
 
 #### LogDNA as a service
 You need to pick DNA from IBM Cloud portal Catalog, and provision it. You can choose the price plan you like then hit Create. 
-![](Picture112.png)
+![](images/Picture112.png)
 
 
 You will get it provisioned in no time, Logging Portal will be open to you where you can open LogDNA portal through the “View LogDNA” link. 
-![](Picture113.png)
+![](images/Picture113.png)
 
 If you open logDNA portal before setting the Log Sources, you will have it empty like below
 LogDNA portal should open like the below screenshot.
-![](Picture114.png)
+![](images/Picture114.png)
 
 In order to configure the Log sources to read from the K8s cluster we created earlier,  from the Logging view, Hit Edit Log Sources, This is where you can configure the different Log sources 
 The view is providing you with couple of kubectl create commands , Just execute them both , and attach the namespace if you are using a different namespace than the default. 
-![](Picture115.png)
+![](images/Picture115.png)
 
-![](Picture116.png)
-![](Picture117.png)
+![](images/Picture116.png)
+![](images/Picture117.png)
 
 In order to validate it can read properly , you need now to check logDNA Dashboard, You should find it reading logs like below screenshot.
 
-![](Picture118.png)
+![](images/Picture118.png)
 
 #### Note:
 As an alternative way, you can do the same LogDNA agent installation on IKS using the Helm Catalog.
 From this catalog, You  can start with choosing LogDNA
 
-![](Picture119.png)
+![](images/Picture119.png)
 
 
 helm repo add kubernetes https://kubernetes-charts.storage.googleapis.com
@@ -229,11 +229,11 @@ If you haven’t already, add the repo.
 
 helm install -name logdna kubernetes/logdna-agent -n eidns
 Choose a release name and install the chart. 
-![](Picture120.png)
+![](images/Picture120.png)
 
 helm list -n eidns
 Verify that you successfully installed the chart.
-![](Picture121.png)
+![](images/Picture121.png)
 
 
 ## Installing Sysdig
@@ -242,19 +242,19 @@ Two Parts:
 We need to have Sysdig as a service (IBM Cloud Monitoring with Sysdig).
 We need to install the agent on K8s Cluster.
 
-![](Picture122.png)
+![](images/Picture122.png)
 
 
 
 
 helm install --name sysdig kubernetes/sysdig -n eidns
 Choose a release name and install the chart. 
-![](Picture123.png)
+![](images/Picture123.png)
 
 helm list -n eidns
 Verify that you successfully installed the chart.
 
-![](Picture124.png)
+![](images/Picture124.png)
 
 
 
