@@ -8,13 +8,18 @@
 	 	 	 		
 
 
-This document will help penetrating a new market IBM didn’t use to knock. Which is the small business market, Egypt will be the example we will use most of the time, which we believe we can clone it to similar countries. 
-The document will 
+This document will help penetrating a new market IBM didn’t use to knock. Which is the small and medium business market.
+The document will highlight the benefits customers can get from having Odoo on a platform like IBM Cloud.
+Leveraging the cloud services benefits side by side with Odoo gives the customer very solid, stable and robust solution.
+
+From the business point of view, We will use Egypt as an example / reference, which we believe we can clone it to similar countries. 
+
+The document is divided into the below sections: 
 - Give an overview about Odoo,  Its customer segment, It’s market share..etc.	
-- Architecture Diagram for Odoo on IBM Cloud.
+- Reference Architecture Diagram for Odoo on IBM Cloud with bulk of Cloud services.
 - How to integrate Odoo with IBM Services. 
-- Detailed Technical guide describing the “How To”.
-- Financial Figure for an average setup of Odoo on IBM Cloud.
+- Detailed step by step technical guide describing the “How To”.
+- Financial Figure for the different Odoo packages.
 
 ## Odoo Overview
 Odoo is a suite of web-based open source business apps. The main Odoo Apps include an Open Source CRM, Website Builder, eCommerce, Project Management, Billing & Accounting, Point of Sale, Human Resources, Marketing, Manufacturing, Purchase Management, …
@@ -32,25 +37,37 @@ Odoo also is available as a Containerized Helm Chart through Bitnami and IBM Hel
 
 Helm Charts needs Kubernetes to run on top of it, IBM will not just offer a Hosting environment for Odoo, The story is much longer.
 
-IBM is offering the Kubernetes and Openshift
+IBM is offering Kubernetes and Openshift
 IBM is offering Odoo as a Helm Chart
 Kubernetes Cluster Integrates with third party services to give a more solid solution powered by Logging and Monitoring through  LogDNA and SysDig.
+IBM offers DBaaS , which customers can leverage to have **fully managed** service.
+IBM offers security services starting from VPN passing by services like WAF, TLS, DNS , DDOS and GLB powered by Cloudflare. 
 IBM has a Catalog of CP Services which can enrich the solution above and beyond.
 
 
 
 ##  Technical Architecture 
-IBM Cloud VPC is the Infrastructure backbone which hosts IKS (IBM Kubernetes Service). We picked IKS on top of Openshift to keep the solution simple and cheaper. 
+IBM Cloud **VPC** is the Infrastructure backbone which hosts IKS (IBM Kubernetes Service). We picked IKS on top of Openshift to keep the solution simple and cheaper. 
 
-IBM Cloud™ Virtual Private Cloud (VPC) is your own protected space in the IBM Cloud. IBM Cloud VPC provides the advanced security of private cloud with the agility and ease of public cloud.
+**IBM Cloud™ Virtual Private Cloud (VPC)** is your own protected space in the IBM Cloud. IBM Cloud VPC provides the advanced security of private cloud with the agility and ease of public cloud.
 
 IBM Cloud™ Kubernetes (IKS) Service is the core of the solution and its main tasks are to automate, isolate, secure, manage, and monitor your workloads across zones or regions.
 
- IBM Cloud Kubernetes Service partners with other third-party service providers to enhance your cluster with top-notch logging, monitoring, and storage tools.
+IBM Cloud Kubernetes Service partners with other third-party service providers to enhance your cluster with top-notch logging, monitoring, and storage tools.
  
 LogDNA is a third-party service that you can use to add intelligent logging capabilities to your cluster and apps.
 
 Sysdig is a third-party, cloud-native container analytics system that you can use to gain insight into the performance and health of your compute hosts, apps, containers, and networks.
+
+Security is provided end to end - VPN is used to encrypt the communication between the users and the hosted System.
+CIS, Cloud Internet Services is used to provide services like DDoS, WAF, TLS ..., etc.
+
+Object storage is used also to provide the availability to backup and archive data properly.
+
+The architecture gives the customer huge benefits like, 
+   - Kubernetes cluster is available through multi-region.
+   - The system will be accessible even if we lose the cluster itself. 
+   - Leveraging Full managed services from IBM Catalog like DBaaS. 
 
 Odoo is available at IBM Cloud Helm Charts, This document will use version 13.0.5. 
 
@@ -58,7 +75,9 @@ Odoo is available at IBM Cloud Helm Charts, This document will use version 13.0.
 
 Installation Guide - Detailed Technical Guide 
 
-Prerequisite :  VPC 
+## Prerequisite :  
+#### **VPC**  
+
 #### Step 01
 You will need to create a VPC in the region we decided to host our cluster. (Frankfurt)
 From IBM Cloud portal , choose to create a VPC. Give it a name and accept all the default, attached a public gateway.
@@ -259,10 +278,30 @@ Verify that you successfully installed the chart.
 
 
 ## Financial Flavor
-IBM Customer will have to pay for his customized service based on what he will use, Based on the exercise we are proposing here, The customer will have to pay for the infrastructure he is using, which means IKS Infrastructure plus the PaaS he is using from IBM catalog which means Sysdig and LogDNA.
+IBM Customer will have to pay for his customized service based on what he will use, Based on the exercise we are proposing here, The customer will have to pay for the infrastructure he is using, which means IKS Infrastructure plus the PaaS he is using from IBM catalog which means Sysdig and LogDNA, ...etc.
 
-IKS Cluster is based on MultiZones (Only 2 Zones), with 2 Worker Nodes (4*16 VSI) per each zone.
+So, Depending on the services the customer will need to leverage, this will determine the expected price.
+Here below, I will try to simplify it giving samples of Price packages:
 
-       IKS + LogDNA + SysDig average list price = 1500$ MRR
+#### Option 1
+       IKS Cluster is based on MultiZones, with 3 Worker Nodes (4*16 VSI) per each zone.
+       LogDNA
+       SysDig 
+       CIS
+       COS
+       DBaaS
+       VPN
+       -------------------------
+       Average List Price will be around 6000$ MRR
              
+
+#### Option 2
+       IKS Cluster is based on MultiZones (Only 2 Zones), with 2 Worker Nodes (4*16 VSI) per each zone.
+       IKS + LogDNA + SysDig 
+       Average list price will be around 2000$ MRR
+             
+
+The solution on IBM Cloud comes with flexibility, It could be tailored to provide only the core services. It could  be fully feldged and provide full packages. So, it matches with the enterprise requirements standards as well as small and medium business. 
+
+
 
