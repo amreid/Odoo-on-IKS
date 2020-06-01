@@ -139,56 +139,59 @@ Choose a name for your first namespace
 
 When the cluster turns green, with Normal status, Validate it is working properly by checking the Overview page. 
 
-
+![](Picture101.png)
 
 The easiest way to proceed with the cluster is to open the dashboard, Click on the Kubernetes Dashboard button to open the K8s Dashboard.
 
 You can validate your Nodes, (you should find 4 nodes each two in different subnet)
 You will find no deployment, as you didn’t deploy anything yet
 
+![](Picture102.png)
 
 Step 04, Create Custom Namespace
 
 kubectl create namespace eidns
-
+![](Picture103.png)
 
 Step 05, 
 From the registry view, Choose Helm Catalog, search for Odoo Helm Chart.
 
+![](Picture104.png)
 
 
 Step 05, 
 If you haven’t already, add the repo.
 helm repo add kubernetes https://kubernetes-charts.storage.googleapis.com
 
+![](Picture105.png)
 
 Choose a release name and install the chart. Specify parameters 
 helm install --name <releasename> kubernetes/odoo --namespace=foo
 
-
+![](Picture106.png)
 
 Validate that your helm chart has been installed.
 helm list
 
-
+![](Picture107.png)
 
 Step 06, 
 Now it is the time to Open and test Odoo portal.
 From the services view, you will find Odoo service up and running, and the external endpoint is there.
 
-
+![](Picture108.png)
 
 
 
 
 Step 06, Click on the external endpoint which will launch in your default browser.
-
+![](Picture107.png)
 
 From Pods view, Containers section you can get the username and password to access Odoo portal.
-
+![](Picture108.png)
 
 Finally, You get Odoo up and running. 
-
+![](Picture109.png)
 
 
 
@@ -201,29 +204,31 @@ We need to install the agent on K8s Cluster.
 
 LogDNA as a service
 You need to pick DNA from IBM Cloud portal Catalog, and provision it. You can choose the price plan you like then hit Create. 
-
+![](Picture110.png)
 
 
 You will get it provisioned in no time, Logging Portal will be open to you where you can open LogDNA portal through the “View LogDNA” link. 
-
+![](Picture111.png)
 
 If you open logDNA portal before setting the Log Sources, you will have it empty like below
 LogDNA portal should open like the below screenshot.
-
+![](Picture112.png)
 
 In order to configure the Log sources to read from the K8s cluster we created earlier,  from the Logging view, Hit Edit Log Sources, This is where you can configure the different Log sources 
 The view is providing you with couple of kubectl create commands , Just execute them both , and attach the namespace if you are using a different namespace than the default. 
+![](Picture113.png)
 
-
-
+![](Picture114.png)
+![](Picture115.png)
 
 In order to validate it can read properly , you need now to check logDNA Dashboard, You should find it reading logs like below screenshot.
 
+![](Picture116.png)
 
 Note:
 As an alternative way, you can do the same LogDNA agent installation on IKS using the Helm Catalog.
 From this catalog, You  can start with choosing LogDNA
-
+![](Picture117.png)
 
 
 helm repo add kubernetes https://kubernetes-charts.storage.googleapis.com
@@ -231,11 +236,11 @@ If you haven’t already, add the repo.
 
 helm install -name logdna kubernetes/logdna-agent -n eidns
 Choose a release name and install the chart. 
-
+![](Picture118.png)
 
 helm list -n eidns
 Verify that you successfully installed the chart.
-
+![](Picture119.png)
 
 
 Installing Sysdig
@@ -244,14 +249,16 @@ Two Parts:
 We need to have Sysdig as a service (IBM Cloud Monitoring with Sysdig).
 We need to install the agent on K8s Cluster.
 
+![](Picture120.png)
 
 
 
 
 helm install --name sysdig kubernetes/sysdig -n eidns
 Choose a release name and install the chart. 
+![](Picture121.png)
 
 helm list -n eidns
 Verify that you successfully installed the chart.
 
-
+![](Picture122.png)
